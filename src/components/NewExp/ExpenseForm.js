@@ -59,11 +59,12 @@ const ExpenseForm=(props)=>{
                 <label>Date</label>
                 <input onChange={DateChangeHandler} type="date" min="2019-01-01" value={enteredDate} max="2022-12-31" />
             </div>
-            <div className='new-expense__actions'>
+           
+        </div>
+        <div className='new-expense__actions'>
                 
                 <button type="submit">edit</button>
             </div>
-        </div>
     </form>);
 }
 export default ExpenseForm;
