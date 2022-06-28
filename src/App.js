@@ -1,25 +1,31 @@
-import { useState , React, Fragment} from "react";
-import Names from "./components/Name/Name";
-import NewName from "./components/NewName/NewName";
+import React, { useState } from 'react';
 
-const DummyNames = [
-  { id: "e1", name: "Abdullah", age:22},
-  { id: "e2", name: "Bahaa", age:22}
-];
-const App = () => {
-  const [names,setNames] = useState(DummyNames);
-  const AddToNames= name=>{
-    setNames((prevNames)=>{
-      return [name,...prevNames];
-    });
-  }
+import Login from './components/Login/Login';
+import Home from './components/Home/Home';
+import MainHeader from './components/MainHeader/MainHeader';
+
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const loginHandler = (email, password) => {
+    // We should of course check email and password
+    // But it's just a dummy/ demo anyways
+    setIsLoggedIn(true);
+  };
+
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
+  };
 
   return (
-    <Fragment>
-      <NewName onAddName={AddToNames} />;
-      <Names data={names} />
-    </ Fragment>
+    <React.Fragment>
+      <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
+      <main>
+        {!isLoggedIn && <Login onLogin={loginHandler} />}
+        {isLoggedIn && <Home onLogout={logoutHandler} />}
+      </main>
+    </React.Fragment>
   );
-};
+}
 
 export default App;
