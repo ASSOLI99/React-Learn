@@ -1,41 +1,24 @@
-import { useState } from "react";
-import Expenses from "./components/Expenses/Expenses";
-import NewExpense from "./components/NewExp/NewExpense";
+import { useState , React, Fragment} from "react";
+import Names from "./components/Name/Name";
+import NewName from "./components/NewName/NewName";
 
-const DummyExpenses = [
-  {
-    id: "e1",
-    title: "Toilet Paper",
-    amount: 94.12,
-    date: new Date(2020, 7, 14),
-  },
-  { id: "e2", title: "New TV", amount: 799.49, date: new Date(2021, 2, 12) },
-  {
-    id: "e3",
-    title: "Car Insurance",
-    amount: 294.67,
-    date: new Date(2021, 2, 28),
-  },
-  {
-    id: "e4",
-    title: "New Desk (Wooden)",
-    amount: 450,
-    date: new Date(2021, 5, 12),
-  },
+const DummyNames = [
+  { id: "e1", name: "Abdullah", age:22},
+  { id: "e2", name: "Bahaa", age:22}
 ];
 const App = () => {
-  const [expenses,setExpenses] = useState(DummyExpenses);
-  const AddToExpenses= expense=>{
-    setExpenses((prevExpenses)=>{
-      return [expense,...prevExpenses];
+  const [names,setNames] = useState(DummyNames);
+  const AddToNames= name=>{
+    setNames((prevNames)=>{
+      return [name,...prevNames];
     });
   }
 
   return (
-    <div>
-      <NewExpense onAddExpense={AddToExpenses} />;
-      <Expenses items={expenses} />
-    </div>
+    <Fragment>
+      <NewName onAddName={AddToNames} />;
+      <Names data={names} />
+    </ Fragment>
   );
 };
 
