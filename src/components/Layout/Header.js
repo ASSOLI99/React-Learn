@@ -10,7 +10,7 @@ const Header = (props) => {
         <HeaderCartButton onClickShow={props.onClickShow}/>
       </header>
       <div className={classes["main-image"]}>
-        <img src={mainImage} alt="A table of delicious food!" />
+        <img src={mainImage} alt="A table of Amazing Background" />
       </div>
     </React.Fragment>
   );
