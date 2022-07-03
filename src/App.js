@@ -1,24 +1,26 @@
-import { Fragment, useState } from "react";
-import Header from "./components/Layout/Header";
-import Meals from "./components/Meals/Meals";
-import Cart from "./components/Cart/Cart";
-import CartProvider from "./store/cartProvider";
+import Nav from './components/Nav';
+import Home from './components/Home';
+import About from './components/About';
+import Movie from './components/Movie';
+import { BrowserRouter , Routes, Route} from 'react-router-dom';
+import "./App.css";
 function App() {
-  const [cartIsShown, setCartIsShown] = useState(false);
-  const showCartHandler = () => {
-    setCartIsShown(true);
-  };
-  const hideCartHandler = () => {
-    setCartIsShown(false);
-  };
   return (
-    <CartProvider>
-      {cartIsShown && <Cart onClickClose={hideCartHandler} />}
-      <Header onClickShow={showCartHandler} />
-      <main>
-        <Meals />
-      </main>
-    </CartProvider>
+    <div className="App">
+    
+    <BrowserRouter>
+    <Nav />
+           <div className="App">
+         
+           <Routes>
+                 <Route exact path='/' element={< Home />}></Route>
+                 <Route exact path='/about' element={< About />}></Route>
+                 <Route exact path='/:Movie_id' element={< Movie />}></Route>
+          </Routes>
+          </div>
+       </BrowserRouter>
+
+    </div>
   );
 }
 
